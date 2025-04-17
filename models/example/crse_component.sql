@@ -3,12 +3,12 @@ with component_descr as (
         LOOKCOMPONENT.FIELDVALUE as COMPONENT_ID,
         LOOKCOMPONENT.XLATSHORTNAME as DESCRSHORT
     from
-        di_sandbox.bronze_cs.bronze_psxlatitem LOOKCOMPONENT
+        raw.campus_solutions.psxlatitem LOOKCOMPONENT
     where
         LOOKCOMPONENT.FIELDNAME = 'SSR_COMPONENT'
         and LOOKCOMPONENT.EFFDT = (
             select max(LOOKCOMPONENT2.EFFDT)
-            from di_sandbox.bronze_cs.bronze_psxlatitem LOOKCOMPONENT2
+            from raw.campus_solutions.psxlatitem LOOKCOMPONENT2
             where
                 LOOKCOMPONENT2.FIELDNAME = LOOKCOMPONENT.FIELDNAME
                 and LOOKCOMPONENT2.FIELDVALUE = LOOKCOMPONENT.FIELDVALUE
@@ -28,7 +28,7 @@ final as (
         ) as CRSE_COMPONENT_DESCRSHORT,
         cast(A.OPTIONAL_SECTION as string) as OPTIONAL_SECTION
     from 
-        di_sandbox.bronze_cs.bronze_ps_crse_component A
+        raw.campus_solutions.ps_crse_component A
     left join
         component_descr comp_descr
     on
