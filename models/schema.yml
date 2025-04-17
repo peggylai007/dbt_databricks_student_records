@@ -1,0 +1,8 @@
+
+version: 2
+
+models:
+  - name: crse_component
+  - name: crse_catalog
+
+  - name: crse_attributes  

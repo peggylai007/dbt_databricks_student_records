@@ -18,15 +18,12 @@ with component_descr as (
 
 final as (
     select
-        cast(A.CRSE_ID as string) as CRSE_ID,
+        A.CRSE_ID as CRSE_ID,
         -- First format the date to a string and then parse it to a date with the format "dd-MMM-yyyy"
         to_date(date_format(A.EFFDT, 'dd-MMM-yyyy'), 'dd-MMM-yyyy') as CRSE_EFFDT,
-        cast(A.SSR_COMPONENT as string) as CRSE_COMPONENT,
-        COALESCE(
-            cast(comp_descr.DESCRSHORT as string),
-            ''
-        ) as CRSE_COMPONENT_DESCRSHORT,
-        cast(A.OPTIONAL_SECTION as string) as OPTIONAL_SECTION
+        A.SSR_COMPONENT as CRSE_COMPONENT,
+        comp_descr.DESCRSHORT as CRSE_COMPONENT_DESCRSHORT,
+        A.OPTIONAL_SECTION as OPTIONAL_SECTION
     from 
         raw.campus_solutions.ps_crse_component A
     left join
