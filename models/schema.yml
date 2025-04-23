@@ -4,5 +4,13 @@ version: 2
 models:
   - name: crse_component
   - name: crse_catalog
-
   - name: crse_attributes  
+  - name: crse_topics
+
+sources:
+  - name: raw_campus_solutions_source
+    description: "Source connection to Campus Solutions data on Databricks"
+    catalog: raw
+    schema: campus_solutions
+    tables:
+      - name: ps_crse_topics
