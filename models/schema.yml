@@ -6,6 +6,8 @@ models:
   - name: crse_catalog
   - name: crse_attributes  
   - name: crse_topics
+  - name: crse_component
+
 
 sources:
   - name: raw_campus_solutions_source
